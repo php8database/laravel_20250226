@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -12,6 +13,9 @@ class StudentController extends Controller
      */
     public function index()
     {
+        // $users = DB::table('users')->select('name', 'email as user_email')->get();
+        $data = DB::table('students')->select('id','name', 'mobile as my_mobile')->get();
+        dd($data);
         // dd('studentController index');
         return view('student.index');
     }

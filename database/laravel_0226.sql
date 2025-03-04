@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2025-03-04 02:41:30
+-- 產生時間： 2025-03-04 04:01:01
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫： `laravel_test0225`
+-- 資料庫： `laravel_0226`
 --
 
 -- --------------------------------------------------------
@@ -113,9 +113,10 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '0001_01_01_000000_create_users_table', 1),
-(2, '0001_01_01_000001_create_cache_table', 1),
-(3, '0001_01_01_000002_create_jobs_table', 1);
+(5, '0001_01_01_000000_create_users_table', 1),
+(6, '0001_01_01_000001_create_cache_table', 1),
+(7, '0001_01_01_000002_create_jobs_table', 1),
+(8, '2025_02_26_080745_create_students_table', 1);
 
 -- --------------------------------------------------------
 
@@ -149,8 +150,30 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('gku2JZwF6ZtO1ja39lymRIXH4asgHMoZagfhxQO3', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiWkFJM0tidkhRUzkyeVVaWVdxcjFwbklZY1RZQTdvTUpENmJhM2t6bCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1740534663),
-('W45Lj4cdjZYGQz24wiNt2u6231F3ayT5YViKIQe4', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiVmJXZXpSQmt0ZWkweWxsREVRRkZjVmVxYlcydHRKWVNDT0dhZVVLaCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1740531752);
+('GOorG3Qj8wqa09pYHYU2AzV50gdKWGtaEvJ84uqF', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiNDlBcVh2TjJjd1pkOW1XekNoUEl4N3dxVWNLeVdGbDRtT1lTTkJmSiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MTY6Imh0dHA6Ly9sb2NhbGhvc3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1741056941);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `students`
+--
+
+CREATE TABLE `students` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `mobile` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `students`
+--
+
+INSERT INTO `students` (`id`, `name`, `mobile`, `created_at`, `updated_at`) VALUES
+(1, 'amy', '0911', NULL, NULL),
+(2, 'bob', '0922', NULL, NULL),
+(3, 'cat', '0933', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -226,6 +249,12 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
+-- 資料表索引 `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `users`
 --
 ALTER TABLE `users`
@@ -252,7 +281,13 @@ ALTER TABLE `jobs`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `users`
